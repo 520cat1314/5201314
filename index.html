@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试你的七美德与七宗罪</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #121218;
+            color: #eee;
+            display:: flex;
+            flex-direction: column;
+            align-items: center;
+            padding:  40px  20px;
+            margin: 0;
+        }
+        .box {
+            background-color: #1f1f2b;
+            padding: 32px;
+            border-radius: 12px;
+            width: min(420px, 100%);
+        }
+        h1 {
+            text-align: center;
+            color: #d8b8ff;
+            margin-top:  0;
+        }
+        .item {
+            margin: 18px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius:  6px;
+            border: none;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius:  8px;
+            background: #9d65d8;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+        .tip-page {
+            display: none;
+            text-align: center;
+            padding-top:  80px;
+        }
+        .tip-page h2 {
+            color: #87e8de;
+        }
+    </style>
+</head>
+<body>
+    <!-- 第一页 输入表单 -->
+    <div id="formPage" class="box">
+        <h1>测试你的七美德和七宗罪</h1>
+        <div class="item">
+            <label>你的名字</label>
+            <input id="name" placeholder="请输入名字">
+        </div>
+        <div class="item">
+            <label>出生日期</label>
+            <input id="birth" type="date">
+        </div>
+        <button onclick="submitData()">开始测试</button>
+    </div>
+
+    <!-- 第二页 揭秘页面 -->
+    <div id="tipPage" class="tip-page">
+        <h2>这个网页是纯前端，根本没有信息会发到后台，哈哈😃</h2>
+    </div>
+
+    <script>
+        function submitData() {
+            const name = document.getElementById('name').value.trim();
+            const birth = document.getElementById('birth').value.trim();
+            if(!name || !birth){
+                alert("名字和生日不能为空！");
+                return;
+            }
+            // 弹窗
+            const res = confirm("对这个陌生的链接都敢输入自己的个人信息，一点防诈意识都没有");
+            if(res){
+                // 点击【确定=我知错了】，切换页面
+                document.getElementById("formPage").style.display = "none";
+                document.getElementById("tipPage").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
